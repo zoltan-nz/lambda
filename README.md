@@ -1,7 +1,43 @@
-# AWS Lambda experiments
+AWS, Lambda, Docker
+===================
 
-* [Victoria University NWEN 406 Lambda Assignment Report](./nwen-406-lambda-assignment.md)
+# Creating static website docker image
 
-Other experiments:
+* https://github.com/smebberson/docker-alpine/tree/master/alpine-nginx
 
-* [Using Alpine Linux and setup a basic static webserver](./hello-from-nginx/README.md)
+## Setup Alpine Linux
+
+
+Launching basic Alpine:
+
+```
+$ docker get alpine
+$ docker run -ti alpine /bin/sh
+```
+
+Update Alpine:
+
+```
+$ apk update
+$ apk upgrade
+$ rm -rf /var/cache/apk/*
+```
+
+Alpine Docker image documentation:
+
+* http://gliderlabs.viewdocs.io/docker-alpine/
+
+Two options for installing packages:
+
+* Using `apk update`, `apk upgrade` with `rm -rf /var/cache/apk/*`, or
+* using `apk --no-cache add ...` option.
+
+## Using Nginx Alpine
+
+Docker Hub link: https://hub.docker.com/_/nginx/
+
+```
+$ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx
+$ docker run --name some-nginx -d some-content-nginx
+$ docker run --name some-nginx -d -p 8080:80 some-content-nginx
+```
