@@ -1,0 +1,54 @@
+<h2>Request Form</h2>
+
+<p>Please setup your query parameters. They will be sent to backend server, which will execute the Lambda Function</p>
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Authentication Token</label>
+    <div class="col-sm-10">
+      {{input type="text" value=model.auth class="form-control" placeholder="Authentication token for validate request."}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Memory</label>
+    <div class="col-sm-10">
+      {{input type="text" value=model.memory class="form-control" placeholder="Memory size used by Lambda Function: 128, 256, 512, 1024"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Async</label>
+    <div class="col-sm-10">
+      {{input type="text" value=model.runAsync class="form-control" placeholder="Send requests async or sync: true or false"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Repeating</label>
+    <div class="col-sm-10">
+      {{input type="text" value=model.repeating class="form-control" placeholder="Number of how many times should repeat the Lambda Function call: max 100"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Max</label>
+    <div class="col-sm-10">
+      {{input type="text" value=model.max class="form-control" placeholder="Lambda Function param, maximum value of Eratosthenes calculation: max 1000000"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Loops</label>
+    <div class="col-sm-10">
+      {{input type="text" value=model.loops class="form-control" placeholder="Lambda Function param, number of loops of Eratosthenes calculation: 1-5"}}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-success" disabled={{model.isSaving}} {{action 'onSubmit' model}}>
+        {{#if model.isSaving}}
+          <span class="glyphicon glyphicon-refresh spinning"></span> Running Lambda Functions...
+        {{else}}
+          Send Query
+        {{/if}}
+
+      </button>
+    </div>
+  </div>
+</div>

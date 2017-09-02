@@ -1,0 +1,16 @@
+{{#each errors as |error|}}
+  <div class="alert alert-danger" role="alert">
+    {{#each-in error as |field message|}}
+      <li>{{field}}: {{message}}</li>
+    {{/each-in}}
+    <p>Is the backend server running on {{config.APP.HOST}}? Setup HOST variable in ./config/environment.js</p>
+  </div>
+{{/each}}
+
+{{query-form model=model onSubmit=(action 'sendQuery')}}
+
+{{#each queries as |query|}}
+  {{#if query.id}}
+    {{show-result model=query}}
+  {{/if}}
+{{/each}}

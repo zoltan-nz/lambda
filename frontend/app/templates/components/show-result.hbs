@@ -1,0 +1,76 @@
+<div class="well well-sm">
+
+  {{#unless model.isValid}}
+    <div class="alert alert-danger" role="alert">
+      <p>Validation errors:</p>
+      <ul>
+        {{#each-in model.validationErrors as |field message|}}
+          <li>{{field}} - {{message}}</li>
+        {{/each-in}}
+      </ul>
+    </div>
+
+  {{/unless}}
+
+  Query
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Memory</th>
+      <th>Async</th>
+      <th>Repeating</th>
+      <th>Max</th>
+      <th>Loops</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{model.id}}</td>
+      <td>{{model.memory}}</td>
+      <td>{{if model.runAsync 'true' 'false'}}</td>
+      <td>{{model.repeating}}</td>
+      <td>{{model.max}}</td>
+      <td>{{model.loops}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  Analysis
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Median</th>
+      <th>Mean</th>
+      <th>Std dev</th>
+      <th>Sum</th>
+      <th>Cost</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{model.analysis.median}}</td>
+      <td>{{model.analysis.mean}}</td>
+      <td>{{model.analysis.stdDev}}</td>
+      <td>{{model.analysis.sum}}</td>
+      <td>{{model.analysis.cost}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+  {{#each messages as |message|}}
+    {{#if message}}
+      <div class="alert alert-danger" role="alert">
+        {{message}}
+      </div>
+    {{/if}}
+  {{/each}}
+
+  <div class="row">
+    <div class="col-md-6">
+      {{ember-chart type='line' data=graphData width=100 height=100}}
+    </div>
+  </div>
+
+</div>
