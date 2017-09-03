@@ -1,0 +1,37 @@
+{
+  "name": "lambda-api-query-backend",
+  "version": "1.0.0",
+  "description": "Accept API request from a client and run lambda function on Amazon AWS",
+  "main": "app/server.mjs",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha",
+    "lint": "./node_modules/.bin/eslint . --fix",
+    "dev": "./node_modules/.bin/nodemon -w ./app -x node --experimental-modules ./app/server.mjs",
+    "dev:debug": "./node_modules/.bin/nodemon -w ./app -x node --inspect-brk --experimental-modules ./app/server.mjs",
+    "start": "node --experimental-modules app/server.mjs"
+  },
+  "author": "Zoltan Debre",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.7.0",
+    "npm": ">=5.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.9.0",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "@koa/cors": "^2.2.1",
+    "axios": "^0.17.0",
+    "dotenv": "^4.0.0",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "lodash": "^4.17.4",
+    "uuid": "^3.1.0"
+  }
+}
