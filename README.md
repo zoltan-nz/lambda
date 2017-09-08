@@ -85,3 +85,19 @@ def lambda_handler(event, context):
         "body": "{\"durationSeconds\": " + str(durationSeconds) + \
         ", \"max\": " + str(maxPrime) + ", \"loops\": " + str(numLoops) + "}"}
 ```
+
+## Running backend
+
+The backend project is placed in `./backend` folder. It is a Node.js application. The best option for running is creating a docker container. There is a Dockerfile.
+
+```
+$ cd ./backend
+$ docker build -t lamdba-backend .
+$ docker run -ti -p 3000:3000 lambda-backend 
+```
+
+Port `3000` is exposed.
+
+```
+$ open http://localhost:3000
+```
