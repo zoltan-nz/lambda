@@ -101,3 +101,21 @@ Port `3000` is exposed.
 ```
 $ open http://localhost:3000
 ```
+
+**Backend app architecture:**
+
+* Node.js 8.7.0 application, using the experimental module loader feature.
+* Using the light Koa.js framework for accepting external requests.
+* Active API endpoints: `/` (root), `/query` 
+
+Instructions for running the backend up in development mode locally:
+
+* Min. requirement Node.js v8.7.0
+
+```
+$ cd ./backend
+$ npm install
+$ npm run dev
+```
+
+LIMITATION! Unfortunately, when we would like to run our lambda function more times in one session, the backend server can time out. The `repeating` can be around 10-15 without issue if our Eratosthenes max value is 1000000. (The default timeout for a Node.js server is 120 seconds.) However, in our requirement we would like to run our experiment 100 times. For this reason the Eratosthenes max value is reduced to 10000.
