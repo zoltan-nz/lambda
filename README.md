@@ -119,3 +119,25 @@ $ npm run dev
 ```
 
 LIMITATION! Unfortunately, when we would like to run our lambda function more times in one session, the backend server can time out. The `repeating` can be around 10-15 without issue if our Eratosthenes max value is 1000000. (The default timeout for a Node.js server is 120 seconds.) However, in our requirement we would like to run our experiment 100 times. For this reason the Eratosthenes max value is reduced to 10000.
+
+##Running the experiment
+
+* There is a script in the `./experiment` folder.
+* You have to run the `backend` server first.
+* The experiment script will generate the required scenarios and will call the backend server.
+* The backend server will send the request to AWS Lambda.
+* The experiment script accept the responses and will save in `./experiment/results` folder.
+
+Run the experiment:
+
+```
+$ cd ./experiment
+$ npm install
+$ npm start
+```
+
+Default backend address is `http://localhost:3000`, you can pass a different backend address as a paramater:
+
+```
+$ npm start -- http://my.different.backend:4000
+```
