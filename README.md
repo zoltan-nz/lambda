@@ -141,3 +141,10 @@ Default backend address is `http://localhost:3000`, you can pass a different bac
 ```
 $ npm start -- http://my.different.backend:4000
 ```
+
+**Harvesting the data**
+
+* Please note, our backend supports synchronous and asynchronous (parallel) execution. The experiment run both version.
+* I realized, that the Lambda API endpoint timeout is max 30 seconds and it cannot be increased. ([More here in this AWS documentation](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html))
+* If our lambda function run more than 30 seconds the endpoint will timeout and we cannot see the result. (We can still run our Lambda Function using the Console if we increase the timeout on the Lambda Function itself.)
+* Reducing the requested maximum number in Erathostenes calculation solved this issue.
