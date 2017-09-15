@@ -148,3 +148,15 @@ $ npm start -- http://my.different.backend:4000
 * I realized, that the Lambda API endpoint timeout is max 30 seconds and it cannot be increased. ([More here in this AWS documentation](http://docs.aws.amazon.com/apigateway/latest/developerguide/limits.html))
 * If our lambda function run more than 30 seconds the endpoint will timeout and we cannot see the result. (We can still run our Lambda Function using the Console if we increase the timeout on the Lambda Function itself.)
 * Reducing the requested maximum number in Erathostenes calculation solved this issue.
+
+**Creating tables**
+
+* After running the `experiment.mjs` script, results will be stored in `./experiment/results`. folder. 
+* We can create a table with the `./experiment/scripts/build-table.mjs`. It reads `json` files from `results` folder and generates a table.
+
+```
+$ cd `./experiment`
+$ npm run table
+```
+
+Generated table will be saved in `./experiment/tables` folder.
