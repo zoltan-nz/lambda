@@ -160,3 +160,10 @@ $ npm run table
 ```
 
 Generated table will be saved in `./experiment/tables` folder.
+
+## Analysis
+
+* Lambda is faster with more allocated memory.
+* When we call Lambda parallel (async), the calculation is a little bit slower (throttling), however we get the results back faster.
+* More details about parallel execution: [Official documentation](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html)
+
