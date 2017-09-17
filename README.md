@@ -167,3 +167,16 @@ Generated table will be saved in `./experiment/tables` folder.
 * When we call Lambda parallel (async), the calculation is a little bit slower (throttling), however we get the results back faster.
 * More details about parallel execution: [Official documentation](http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html)
 
+The relevant descriptions from AWS Lambda documentation:
+
+> Concurrent Execution Limit:
+
+> By default, AWS Lambda limits the total concurrent executions across all functions within a given region to 1000. For instructions on how to increase that limit, see the following.
+
+> Any invocation that causes your function's concurrent execution to exceed the safety limit is throttled. In this case, the invocation doesn't execute your function. Each throttled invocation increases the Amazon CloudWatch Throttles metric for the function.
+
+> Scaling: 
+
+> AWS Lambda will dynamically scale capacity in response to increased traffic, subject to your account's Concurrent Execution Limit. To handle any burst in traffic, Lambda will immediately increase your concurrently executing functions by a predetermined amount, dependent on which region it's executed (see table below).
+
+> If the default Immediate Concurrency Increase value, as noted in the table below, is not sufficient to accommodate the traffic surge, Lambda will continue to increase the number of concurrent function executions by 500 per minute until your account safety limit has been reached or the number of concurrently executing functions is sufficient to successfully process the increased load.
