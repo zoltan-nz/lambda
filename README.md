@@ -180,3 +180,21 @@ The relevant descriptions from AWS Lambda documentation:
 > AWS Lambda will dynamically scale capacity in response to increased traffic, subject to your account's Concurrent Execution Limit. To handle any burst in traffic, Lambda will immediately increase your concurrently executing functions by a predetermined amount, dependent on which region it's executed (see table below).
 
 > If the default Immediate Concurrency Increase value, as noted in the table below, is not sufficient to accommodate the traffic surge, Lambda will continue to increase the number of concurrent function executions by 500 per minute until your account safety limit has been reached or the number of concurrently executing functions is sufficient to successfully process the increased load.
+
+Important notes:
+
+* Never commit or save an API key in the source repository.
+* Options for passing secret keys to your application: using system environment variables or using `.env` file.
+* Other benefit, that we can have different API key for development and for production, and we can have different `.env` file for different stage.
+
+Implementation steps in Node.js:
+
+* Add `dotenv` package to the app.
+
+```
+$ npm install dotenv --save
+```
+
+* Create a `.env` file in the app folder. Add your custom variables. Good idea to exclude this file from git repository with adding to `.gitignore`.
+* Import this package in each module where you would like to use an external system environment.
+* Access to the environment variable with `process.env`, for example: `process.env.AWS_LAMBDA_API_KEY`.
